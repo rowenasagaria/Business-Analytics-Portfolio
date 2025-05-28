@@ -19,7 +19,7 @@ Whether it's mapping customer journeys or finding out why coffee sales dip on ra
 
 ## 🛠️ Projects
 
-### 1. 🛍️ Retail Sales Dashboard (Power BI) (./power-bi-retail-dashboard/)
+### 1. 🛍️ [Retail Sales Dashboard (Power BI)](./power-bi-retail-dashboard/)
 **Goal:** Track how well fictional stores are doing and make better decisions. KPIs, trends, and sales insights packed into one sleek dashboard.
 
 📁 Folder: `power-bi-retail-dashboard/`  
@@ -27,7 +27,7 @@ Whether it's mapping customer journeys or finding out why coffee sales dip on ra
 
 ---
 
-### 2. 🌀 Customer Support Workflow (Visio) (./visio-customer-workflow/)
+### 2. 🌀 [Customer Support Workflow (Visio)](./visio-customer-workflow/)
 **Goal:** Show how a customer’s problem becomes a solution. From "Hi, I need help!" to "You're all set!" in a clear visual process.
 
 📁 Folder: `visio-customer-workflow/`  
