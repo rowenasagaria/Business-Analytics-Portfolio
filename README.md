@@ -46,7 +46,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 
 ---
 
-## 📂 4. Academic Projects
+## 📂 4. Academic Project Reports
 **📍 Focus**: Data analysis, BI reporting, SAP workflow, and ETL pipelines  
 **🧾 Contains**:
 - 📌 *Digital Transformation Project*: Executive insight on strategic initiatives  
