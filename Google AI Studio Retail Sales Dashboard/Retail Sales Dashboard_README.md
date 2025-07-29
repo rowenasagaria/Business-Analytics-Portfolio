@@ -2,6 +2,9 @@
 
 ## 📌 Overview
 
+This project was made by using this reference [[Youtube Link](https://www.youtube.com/watch?v=zkGoagGpeuY)]
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zkGoagGpeuY?si=CcL61DpJ5ufJBsdX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 This **Retail Sales Dashboard** is a web-based application built using Google Sheets, Google Apps Script, HTML/CSS/JS, and powered by Gemini AI prompts. It allows users to dynamically visualize retail sales data using an intuitive UI backed by charts and key metrics derived from a Google Sheet (`DASHBOARD` > `dataset` tab).
 
 This project demonstrates how LLMs like Gemini can be used to rapidly prototype dashboards. In cases where Gemini's output is unreliable or inconsistent, the accompanying `index.html` and `code.gs` files can serve as fallback templates or fine-tuning datasets.
@@ -71,27 +74,30 @@ The `dataset` tab must include:
 
 ## 🧪 How to Replicate
 
-1. **Google Sheet Setup:**
+1. **Gemini Integration:**
+   - Paste the provided prompts one by one in [Gemini AI Studio](https://aistudio.google.com/prompts/new_chat)
+   - Provide the sample dataset
+   - Review or debug the generated logic
+   - Use this project’s files as reference or training inputs
+
+2. **Google Sheet Setup:**
    - Create a sheet named `DASHBOARD`
    - Add a tab named `dataset` with the above structure
    - Paste the sample data or use your own
 
-2. **Script Deployment:**
-   - Open Apps Script tied to the sheet
+3. **Script Deployment:**
+   - Open Apps Script tied to the sheet (Extensions -> Apps Script)
    - Add `code.gs` logic
    - Create a new HTML file and paste `index.html`
-   - Deploy as a web app (set access to "Anyone")
+   - Deploy as a web app (set access to "Anyone" if you want to add collaborators)
 
-3. **(Optional) Gemini Integration:**
-   - Paste the provided prompt in [Gemini AI Studio](https://aistudio.google.com/app/prompts)
-   - Review or debug the generated logic
-   - Use this project’s files as reference or training inputs
+
 
 ---
 
 ## 🧠 Use Case
 
-Ideal for small businesses, analysts, and students who want a lightweight BI dashboard powered by Google Sheets and visualized without any external BI software.
+Ideal for rapid prototyping dashboards for small businesses, analysts, and students who want a lightweight BI dashboard powered by Google Sheets and visualized without any external BI software.
 
 ---
 
@@ -100,7 +106,7 @@ Ideal for small businesses, analysts, and students who want a lightweight BI das
 If Gemini fails to generate a working version:
 - Use `code.gs` and `index.html` from this repo.
 - Modify chart logic or layout based on your dataset.
-- Reach out on LinkedIn: [Rowena Sagaria](https://www.linkedin.com/in/rowenasagaria)
+- Reach out to me on LinkedIn: [Rowena Sagaria](https://www.linkedin.com/in/rowenasagaria)
 
 ---
 
