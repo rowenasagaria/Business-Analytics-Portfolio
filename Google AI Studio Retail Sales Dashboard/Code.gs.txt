@@ -1,0 +1,594 @@
+// Create a menu item to open the dashboard
+function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  ui.createMenu('Dashboard')
+    .addItem('Open Dashboard', 'openDashboard')
+    .addToUi();
+}
+
+
+// Function to open the dashboard in a modal dialog
+function openDashboard() {
+  var html = HtmlService.createHtmlOutputFromFile('index')
+    .setWidth(1200)
+    .setHeight(800)
+    .setTitle('Business Dashboard');
+  SpreadsheetApp.getUi().showModalDialog(html, 'Business Dashboard');
+}
+
+
+// Function to get all the data needed for the dashboard
+function getDashboardData() {
+  try {
+    // Get the spreadsheet and sheet
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = spreadsheet.getSheetByName('dataset');
+    
+    // Get all data from the sheet
+    var data = sheet.getDataRange().getValues();
+    
+    // Extract headers
+    var headers = data[0];
+    
+    // Remove header row
+    var rows = data.slice(1);
+    
+    // Find column indices
+    var dateIndex = headers.indexOf('Date');
+    var entityNameIndex = headers.indexOf('Entity Name');
+    var productIndex = headers.indexOf('Product');
+    var categoryIndex = headers.indexOf('Category');
+    var locationIndex = headers.indexOf('Location');
+    var salesIndex = headers.indexOf('Sales');
+    var costIndex = headers.indexOf('Cost');
+    var marginIndex = headers.indexOf('Margin');
+    var expensesIndex = headers.indexOf('Expenses');
+    var profitIndex = headers.indexOf('Profit');
+    
+    // Calculate metrics for cards
+    var totalSales = calculateTotalSales(rows, salesIndex);
+    var totalCost = calculateTotalCost(rows, costIndex);
+    var avgMargin = calculateAverageMargin(rows, marginIndex, salesIndex);
+    var topLocation = findTopLocation(rows, locationIndex, salesIndex);
+    var topProduct = findTopProduct(rows, productIndex, salesIndex);
+    var topCustomer = findTopCustomer(rows, entityNameIndex, salesIndex);
+    
+    // Prepare chart data
+    var salesTrend = getSalesTrendData(rows, dateIndex, salesIndex);
+    var salesByLocation = getSalesByLocationData(rows, locationIndex, salesIndex);
+    var salesByCategory = getSalesByCategoryData(rows, categoryIndex, salesIndex);
+    var topCustomers = getTopCustomersData(rows, entityNameIndex, salesIndex);
+    var salesExpenseProfit = getSalesExpenseProfitData(rows, dateIndex, salesIndex, costIndex, expensesIndex, profitIndex);
+    var profitByCategory = getProfitByCategoryData(rows, dateIndex, categoryIndex, profitIndex);
+    var profitByLocation = getProfitByLocationData(rows, locationIndex, profitIndex);
+    var salesProfitTrend = getSalesProfitTrendData(rows, dateIndex, salesIndex, profitIndex);
+    
+    // Return all data in a single object
+    return {
+      totalSales: totalSales,
+      totalCost: totalCost,
+      avgMargin: avgMargin,
+      topLocation: topLocation,
+      topProduct: topProduct,
+      topCustomer: topCustomer,
+      salesTrend: salesTrend,
+      salesByLocation: salesByLocation,
+      salesByCategory: salesByCategory,
+      topCustomers: topCustomers,
+      salesExpenseProfit: salesExpenseProfit,
+      profitByCategory: profitByCategory,
+      profitByLocation: profitByLocation,
+      salesProfitTrend: salesProfitTrend
+    };
+  } catch (error) {
+    Logger.log('Error in getDashboardData: ' + error.toString());
+    return { error: error.toString() };
+  }
+}
+
+
+// Card 1: Calculate Total Sales
+function calculateTotalSales(rows, salesIndex) {
+  var total = 0;
+  for (var i = 0; i < rows.length; i++) {
+    total += parseFloat(rows[i][salesIndex] || 0);
+  }
+  return total;
+}
+
+
+// Card 2: Calculate Total Cost
+function calculateTotalCost(rows, costIndex) {
+  var total = 0;
+  for (var i = 0; i < rows.length; i++) {
+    total += parseFloat(rows[i][costIndex] || 0);
+  }
+  return total;
+}
+
+
+// Card 3: Calculate Average Margin
+function calculateAverageMargin(rows, marginIndex, salesIndex) {
+  var totalMargin = 0;
+  var totalSales = 0;
+  
+  for (var i = 0; i < rows.length; i++) {
+    totalMargin += parseFloat(rows[i][marginIndex] || 0);
+    totalSales += parseFloat(rows[i][salesIndex] || 0);
+  }
+  
+  return (totalMargin / totalSales) * 100;
+}
+
+
+// Card 4: Find Top Sales Location
+function findTopLocation(rows, locationIndex, salesIndex) {
+  var locationSales = {};
+  
+  // Calculate sales for each location
+  for (var i = 0; i < rows.length; i++) {
+    var location = rows[i][locationIndex];
+    var sales = parseFloat(rows[i][salesIndex] || 0);
+    
+    if (!locationSales[location]) {
+      locationSales[location] = 0;
+    }
+    
+    locationSales[location] += sales;
+  }
+  
+  // Find the location with the highest sales
+  var topLocation = '';
+  var maxSales = 0;
+  
+  for (var location in locationSales) {
+    if (locationSales[location] > maxSales) {
+      maxSales = locationSales[location];
+      topLocation = location;
+    }
+  }
+  
+  return topLocation;
+}
+
+
+// Card 5: Find Top Selling Product
+function findTopProduct(rows, productIndex, salesIndex) {
+  var productSales = {};
+  
+  // Calculate sales for each product
+  for (var i = 0; i < rows.length; i++) {
+    var product = rows[i][productIndex];
+    var sales = parseFloat(rows[i][salesIndex] || 0);
+    
+    if (!productSales[product]) {
+      productSales[product] = 0;
+    }
+    
+    productSales[product] += sales;
+  }
+  
+  // Find the product with the highest sales
+  var topProduct = '';
+  var maxSales = 0;
+  
+  for (var product in productSales) {
+    if (productSales[product] > maxSales) {
+      maxSales = productSales[product];
+      topProduct = product;
+    }
+  }
+  
+  return topProduct;
+}
+
+
+// Card 6: Find Top Customer
+function findTopCustomer(rows, entityNameIndex, salesIndex) {
+  var customerSales = {};
+  
+  // Calculate sales for each customer
+  for (var i = 0; i < rows.length; i++) {
+    var customer = rows[i][entityNameIndex];
+    var sales = parseFloat(rows[i][salesIndex] || 0);
+    
+    if (!customerSales[customer]) {
+      customerSales[customer] = 0;
+    }
+    
+    customerSales[customer] += sales;
+  }
+  
+  // Find the customer with the highest sales
+  var topCustomer = '';
+  var maxSales = 0;
+  
+  for (var customer in customerSales) {
+    if (customerSales[customer] > maxSales) {
+maxSales = customerSales[customer];
+      topCustomer = customer;
+    }
+  }
+  
+  return topCustomer;
+}
+
+
+// Chart 1: Sales Trend data
+function getSalesTrendData(rows, dateIndex, salesIndex) {
+  var monthlyData = {};
+  
+  // Group sales by month and year
+  for (var i = 0; i < rows.length; i++) {
+    var dateStr = rows[i][dateIndex];
+    var date = new Date(dateStr);
+    var monthYear = Utilities.formatDate(date, Session.getScriptTimeZone(), "MMM yyyy");
+    var sales = parseFloat(rows[i][salesIndex] || 0);
+    
+    if (!monthlyData[monthYear]) {
+      monthlyData[monthYear] = 0;
+    }
+    
+    monthlyData[monthYear] += sales;
+  }
+  
+  // Sort dates chronologically
+  var sortedMonths = Object.keys(monthlyData).sort(function(a, b) {
+    return new Date(a) - new Date(b);
+  });
+  
+  // Prepare data for chart
+  var dates = [];
+  var values = [];
+  
+  for (var i = 0; i < sortedMonths.length; i++) {
+    dates.push(sortedMonths[i]);
+    values.push(monthlyData[sortedMonths[i]]);
+  }
+  
+  return {
+    dates: dates,
+    values: values
+  };
+}
+
+
+// Chart 2: Sales By Location data
+function getSalesByLocationData(rows, locationIndex, salesIndex) {
+  var locationSales = {};
+  
+  // Calculate sales for each location
+  for (var i = 0; i < rows.length; i++) {
+    var location = rows[i][locationIndex];
+    var sales = parseFloat(rows[i][salesIndex] || 0);
+    
+    if (!locationSales[location]) {
+      locationSales[location] = 0;
+    }
+    
+    locationSales[location] += sales;
+  }
+  
+  // Prepare data for chart
+  var locations = [];
+  var values = [];
+  
+  for (var location in locationSales) {
+    locations.push(location);
+    values.push(locationSales[location]);
+  }
+  
+  return {
+    locations: locations,
+    values: values
+  };
+}
+
+
+// Chart 3: Sales By Category data
+function getSalesByCategoryData(rows, categoryIndex, salesIndex) {
+  var categorySales = {};
+  var totalSales = 0;
+  
+  // Calculate sales for each category
+  for (var i = 0; i < rows.length; i++) {
+    var category = rows[i][categoryIndex];
+    var sales = parseFloat(rows[i][salesIndex] || 0);
+    
+    if (!categorySales[category]) {
+      categorySales[category] = 0;
+    }
+    
+    categorySales[category] += sales;
+    totalSales += sales;
+  }
+  
+  // Prepare data for chart and calculate percentages
+  var categories = [];
+  var values = [];
+  
+  for (var category in categorySales) {
+    categories.push(category);
+    // Calculate percentage
+    var percentage = (categorySales[category] / totalSales) * 100;
+    values.push(percentage);
+  }
+  
+  return {
+    categories: categories,
+    values: values,
+    rawValues: categorySales // Include the raw values for possible tooltip
+  };
+}
+
+
+// Chart 4: Top 10 Customers data
+function getTopCustomersData(rows, entityNameIndex, salesIndex) {
+  var customerSales = {};
+  
+  // Calculate sales for each customer
+  for (var i = 0; i < rows.length; i++) {
+    var customer = rows[i][entityNameIndex];
+    var sales = parseFloat(rows[i][salesIndex] || 0);
+    
+    if (!customerSales[customer]) {
+      customerSales[customer] = 0;
+    }
+    
+    customerSales[customer] += sales;
+  }
+  
+  // Convert to array for sorting
+  var customersArray = [];
+  for (var customer in customerSales) {
+    customersArray.push({
+      name: customer,
+      sales: customerSales[customer]
+    });
+  }
+  
+  // Sort by sales (descending) and take top 10
+  customersArray.sort(function(a, b) {
+    return b.sales - a.sales;
+  });
+  
+  var top10 = customersArray.slice(0, 10);
+  
+  // Prepare data for chart
+  var customers = [];
+  var values = [];
+  
+  for (var i = 0; i < top10.length; i++) {
+    customers.push(top10[i].name);
+    values.push(top10[i].sales);
+  }
+  
+  return {
+    customers: customers.reverse(), // Reverse for better visualization
+    values: values.reverse()
+  };
+}
+
+
+// Chart 5: Sales, Expense and Profit data
+function getSalesExpenseProfitData(rows, dateIndex, salesIndex, costIndex, expensesIndex, profitIndex) {
+  var yearlyData = {};
+  
+  // Group data by year
+  for (var i = 0; i < rows.length; i++) {
+    var dateStr = rows[i][dateIndex];
+    var date = new Date(dateStr);
+    var year = date.getFullYear().toString();
+    
+    if (!yearlyData[year]) {
+      yearlyData[year] = {
+        sales: 0,
+        costs: 0,
+        expenses: 0,
+        profits: 0
+      };
+    }
+    
+    yearlyData[year].sales += parseFloat(rows[i][salesIndex] || 0);
+    yearlyData[year].costs += parseFloat(rows[i][costIndex] || 0);
+    yearlyData[year].expenses += parseFloat(rows[i][expensesIndex] || 0);
+    yearlyData[year].profits += parseFloat(rows[i][profitIndex] || 0);
+  }
+  
+  // Sort years chronologically
+  var sortedYears = Object.keys(yearlyData).sort();
+  
+  // Prepare data for chart
+  var years = [];
+  var sales = [];
+  var costs = [];
+  var expenses = [];
+  var profits = [];
+  
+  for (var i = 0; i < sortedYears.length; i++) {
+    var year = sortedYears[i];
+    years.push(year);
+    
+    // Calculate percentages
+    var total = yearlyData[year].sales + yearlyData[year].costs + yearlyData[year].expenses + yearlyData[year].profits;
+    
+    sales.push((yearlyData[year].sales / total) * 100);
+    costs.push((yearlyData[year].costs / total) * 100);
+    expenses.push((yearlyData[year].expenses / total) * 100);
+    profits.push((yearlyData[year].profits / total) * 100);
+  }
+  
+  return {
+    years: years,
+    sales: sales,
+    costs: costs,
+    expenses: expenses,
+    profits: profits
+  };
+}
+
+
+// Chart 6: Profit By Category data
+function getProfitByCategoryData(rows, dateIndex, categoryIndex, profitIndex) {
+  var yearCategoryProfit = {};
+  var categories = new Set();
+  
+  // Group profit by year and category
+  for (var i = 0; i < rows.length; i++) {
+    var dateStr = rows[i][dateIndex];
+    var date = new Date(dateStr);
+    var year = date.getFullYear().toString();
+    var category = rows[i][categoryIndex];
+    var profit = parseFloat(rows[i][profitIndex] || 0);
+    
+    categories.add(category);
+    
+    if (!yearCategoryProfit[year]) {
+      yearCategoryProfit[year] = {};
+    }
+    
+    if (!yearCategoryProfit[year][category]) {
+      yearCategoryProfit[year][category] = 0;
+    }
+    
+    yearCategoryProfit[year][category] += profit;
+  }
+  
+  // Sort years chronologically
+  var sortedYears = Object.keys(yearCategoryProfit).sort();
+  var categoriesArray = Array.from(categories);
+  
+  // Prepare data for chart
+  var series = [];
+  
+  for (var i = 0; i < categoriesArray.length; i++) {
+    var category = categoriesArray[i];
+    var data = [];
+    
+    for (var j = 0; j < sortedYears.length; j++) {
+      var year = sortedYears[j];
+      data.push(yearCategoryProfit[year][category] || 0);
+    }
+    
+    series.push({
+      name: category,
+      data: data
+    });
+  }
+  
+  return {
+    years: sortedYears,
+    series: series
+  };
+}
+
+
+// Chart 7: Profit By Location data
+function getProfitByLocationData(rows, locationIndex, profitIndex) {
+  var locationProfit = {};
+  var totalProfit = 0;
+  
+  // Calculate profit for each location
+  for (var i = 0; i < rows.length; i++) {
+    var location = rows[i][locationIndex];
+    var profit = parseFloat(rows[i][profitIndex] || 0);
+    
+    if (!locationProfit[location]) {
+      locationProfit[location] = 0;
+    }
+    
+    locationProfit[location] += profit;
+    totalProfit += profit;
+  }
+  
+  // Prepare data for chart and calculate percentages
+  var locations = [];
+  var values = [];
+  
+  for (var location in locationProfit) {
+    if (locationProfit[location] > 0) { // Only include locations with positive profit
+      locations.push(location);
+      var percentage = (locationProfit[location] / totalProfit) * 100;
+      values.push(parseFloat(percentage.toFixed(1)));
+    }
+  }
+  
+  return {
+    locations: locations,
+    values: values
+  };
+}
+
+
+// Chart 8: Sales and Profit Trend data
+function getSalesProfitTrendData(rows, dateIndex, salesIndex, profitIndex) {
+  var monthlyData = {};
+  
+  // Group sales and profit by month and year
+  for (var i = 0; i < rows.length; i++) {
+    var dateStr = rows[i][dateIndex];
+    var date = new Date(dateStr);
+    var monthYear = Utilities.formatDate(date, Session.getScriptTimeZone(), "MMM yyyy");
+    var sales = parseFloat(rows[i][salesIndex] || 0);
+    var profit = parseFloat(rows[i][profitIndex] || 0);
+    
+    if (!monthlyData[monthYear]) {
+      monthlyData[monthYear] = {
+        sales: 0,
+        profit: 0
+      };
+    }
+    
+    monthlyData[monthYear].sales += sales;
+    monthlyData[monthYear].profit += profit;
+  }
+  
+  // Sort dates chronologically
+  var sortedMonths = Object.keys(monthlyData).sort(function(a, b) {
+    return new Date(a) - new Date(b);
+  });
+  
+  // Prepare data for chart
+  var dates = [];
+  var sales = [];
+  var profits = [];
+  
+  for (var i = 0; i < sortedMonths.length; i++) {
+    dates.push(sortedMonths[i]);
+    sales.push(monthlyData[sortedMonths[i]].sales);
+    profits.push(monthlyData[sortedMonths[i]].profit);
+  }
+  
+  return {
+    dates: dates,
+    sales: sales,
+    profits: profits
+  };
+}
+
+
+// Helper function to parse dates in DD-MMM-YYYY format
+function parseDate(dateString) {
+  var parts = dateString.split('-');
+  var day = parseInt(parts[0], 10);
+  
+  var monthNames = {
+    'JAN': 0, 'FEB': 1, 'MAR': 2, 'APR': 3, 'MAY': 4, 'JUN': 5,
+    'JUL': 6, 'AUG': 7, 'SEP': 8, 'OCT': 9, 'NOV': 10, 'DEC': 11
+  };
+  
+  var month = monthNames[parts[1].toUpperCase()];
+  var year = parseInt(parts[2], 10);
+  
+  return new Date(year, month, day);
+}
+
+
+// Function to deploy as a web app
+function doGet() {
+  return HtmlService.createHtmlOutputFromFile('index')
+    .setTitle('Business Dashboard')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+

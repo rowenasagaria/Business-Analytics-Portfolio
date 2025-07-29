@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.0/apexcharts.min.js"></script>
+  <style>
+    /* --- DARK THEME & PURPLE PALETTE --- */
+    :root {
+      --bg-main: #1a1a2e;
+      --bg-card: #2c2c44;
+      --primary-accent: #9b59b6;
+      --text-primary: #f0f0f0;
+      --text-secondary: #a9a9d1;
+      --grid-lines: rgba(255, 255, 255, 0.1);
+      --purple-palette: '#9b59b6', '#8e44ad', '#7d3c98', '#6c3483', '#5b2c6f', '#4a235a';
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    body {
+      background-color: var(--bg-main);
+      padding: 30px;
+    }
+    
+    .dashboard-container {
+      max-width: 1920px;
+      margin: 0 auto;
+      padding: 30px;
+      border-radius: 10px;
+    }
+    
+    /* Main Heading */
+    .main-heading {
+      margin-bottom: 30px;
+      margin-top: -40px;
+      color: var(--text-primary);
+    }
+    
+    .main-heading h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+    
+    .main-heading h2 {
+      font-size: 18px;
+      font-weight: normal;
+      color: var(--text-secondary);
+    }
+    
+    /* Metric Cards */
+    .metric-cards {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+    
+    .metric-card {
+      background-color: var(--bg-card);
+      border-radius: 8px;
+      padding: 20px;
+      height: 100px;
+      position: relative;
+      border-left: 4px solid var(--primary-accent);
+    }
+    
+    .metric-card h3 {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .metric-card i {
+      margin-right: 8px;
+      color: var(--text-secondary);
+    }
+    
+    .metric-card h2 {
+      font-size: 24px;
+      color: var(--text-primary);
+      font-weight: bold;
+    }
+    
+    /* Chart Grid */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 650px 300px minmax(0, 1fr);
+      gap: 24px;
+    }
+    
+    .chart-column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    
+    .chart-card {
+      background-color: var(--bg-card);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    
+    .chart-card h3 {
+      font-size: 16px;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    
+    .chart-row {
+      display: flex;
+      gap: 24px;
+    }
+    
+    .chart-50, .chart-25, .chart-75 {
+      flex: 1;
+    }
+    
+    /* Loading State */
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 24px;
+      color: var(--text-primary);
+    }
+    
+    .loading i {
+      margin-right: 10px;
+      animation: spin 1s infinite linear;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading" class="loading">
+    <i class="fas fa-spinner"></i> Loading dashboard data...
+  </div>
+  
+  <div id="dashboard" class="dashboard-container" style="display: none;">
+    <!-- Main Heading -->
+    <div class="main-heading">
+      <h1>Dashboard</h1>
+      <h2>Key trends and business insights</h2>
+    </div>
+    
+    <!-- Metric Cards -->
+    <div class="metric-cards">
+      <div class="metric-card">
+        <h3><i class="fas fa-chart-line"></i> Total Sales</h3>
+        <h2 id="totalSales">$0</h2>
+      </div>
+      <div class="metric-card">
+        <h3><i class="fas fa-money-bill"></i> Total Cost</h3>
+        <h2 id="totalCost">$0</h2>
+      </div>
+      <div class="metric-card">
+        <h3><i class="fas fa-percentage"></i> Average Margin</h3>
+        <h2 id="avgMargin">0%</h2>
+      </div>
+      <div class="metric-card">
+        <h3><i class="fas fa-map-marker-alt"></i> Top Sales Location</h3>
+        <h2 id="topLocation">-</h2>
+      </div>
+      <div class="metric-card">
+        <h3><i class="fas fa-box"></i> Top Selling Product</h3>
+        <h2 id="topProduct">-</h2>
+      </div>
+      <div class="metric-card">
+        <h3><i class="fas fa-user"></i> Top Customer</h3>
+        <h2 id="topCustomer">-</h2>
+      </div>
+    </div>
+    
+    <!-- Chart Grid -->
+    <div class="chart-grid">
+      <!-- First Column -->
+      <div class="chart-column">
+        <div class="chart-card">
+          <h3>Sales Trend</h3>
+          <div id="salesTrendChart"></div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-card chart-50">
+            <h3>Sales By Location</h3>
+            <div id="salesByLocationChart"></div>
+          </div>
+          <div class="chart-card chart-50">
+            <h3>Sales By Category</h3>
+            <div id="salesByCategoryChart"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Second Column -->
+      <div class="chart-column">
+        <div class="chart-card">
+          <h3>Top 10 Customers</h3>
+          <div id="topCustomersChart"></div>
+        </div>
+      </div>
+      
+      <!-- Third Column -->
+      <div class="chart-column">
+        <div class="chart-row">
+          <div class="chart-card chart-50">
+             <h3>Profit By Location</h3>
+            <div id="profitByLocationChart"></div>
+          </div>
+          <div class="chart-card chart-50">
+            <h3>Profit By Category</h3>
+            <div id="profitByCategoryChart"></div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-card chart-25">
+            <h3>Sales, Expense and Profit</h3>
+            <div id="salesExpenseProfitChart"></div>
+          </div>           
+          <div class="chart-card chart-75">
+            <h3>Sales and Profit Trend</h3>
+            <div id="salesProfitTrendChart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // --- DARK THEME CHART PALETTE ---
+    const purplePalette = ['#9b59b6', '#8e44ad', '#7d3c98', '#6c3483', '#5b2c6f', '#4a235a'];
+    const textPrimaryColor = '#f0f0f0';
+    const textSecondaryColor = '#a9a9d1';
+    const gridLinesColor = 'rgba(255, 255, 255, 0.1)';
+    const primaryAccentColor = '#9b59b6';
+
+    document.addEventListener('DOMContentLoaded', function() {
+      google.script.run
+        .withSuccessHandler(initDashboard)
+        .withFailureHandler(handleError)
+        .getDashboardData();
+    });
+    
+    function handleError(error) {
+      document.getElementById('loading').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error loading data: ' + error.message;
+    }
+    
+    function initDashboard(data) {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      
+      document.getElementById('totalSales').textContent = formatCurrency(data.totalSales);
+      document.getElementById('totalCost').textContent = formatCurrency(data.totalCost);
+      document.getElementById('avgMargin').textContent = formatPercentage(data.avgMargin);
+      document.getElementById('topLocation').textContent = data.topLocation;
+      document.getElementById('topProduct').textContent = data.topProduct;
+      document.getElementById('topCustomer').textContent = data.topCustomer;
+      
+      initSalesTrendChart(data.salesTrend);
+      initSalesByLocationChart(data.salesByLocation);
+      initSalesByCategoryChart(data.salesByCategory);
+      initTopCustomersChart(data.topCustomers);
+      initSalesExpenseProfitChart(data.salesExpenseProfit);
+      initProfitByCategoryChart(data.profitByCategory);
+      initProfitByLocationChart(data.profitByLocation);
+      initSalesProfitTrendChart(data.salesProfitTrend);
+    }
+    
+    function formatCurrency(value) {
+      return '$' + parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+    
+    function formatPercentage(value) {
+      return parseFloat(value).toFixed(2) + '%';
+    }
+    
+    // Chart 1: Sales Trend
+    function initSalesTrendChart(data) {
+      const options = {
+        series: [{ name: 'Sales', data: data.values }],
+        chart: { type: 'area', height: 300, fontFamily: 'Arial, sans-serif', toolbar: { show: false } },
+        markers: { size: 2, colors: primaryAccentColor, strokeColors: primaryAccentColor, strokeWidth: 2 },
+        dataLabels: { enabled: false },
+        stroke: { curve: 'smooth', width: 2, colors: [primaryAccentColor] },
+        fill: { type: 'gradient', gradient: { shade: 'dark', type: 'vertical', shadeIntensity: 0.5, opacityFrom: 0.7, opacityTo: 0.1, stops: [0, 100] }, colors: [primaryAccentColor] },
+        xaxis: { type: 'datetime', categories: data.dates, labels: { format: 'MMM-yy', style: { colors: textSecondaryColor, fontSize: '12px' } } },
+        yaxis: { labels: { formatter: (value) => (value / 1000) + 'k', style: { colors: textSecondaryColor, fontSize: '12px' } } },
+        tooltip: { theme: 'dark', x: { format: 'MMM yyyy' } },
+        grid: { borderColor: gridLinesColor, strokeDashArray: 4 }
+      };
+      const chart = new ApexCharts(document.querySelector("#salesTrendChart"), options);
+      chart.render();
+    }
+    
+    // Chart 2: Sales By Location
+    function initSalesByLocationChart(data) {
+      const options = {
+        series: [{ name: 'Sales', data: data.values }],
+        chart: { type: 'bar', height: 300, fontFamily: 'Arial, sans-serif', toolbar: { show: false } },
+        plotOptions: { bar: { borderRadius: 4, horizontal: false, columnWidth: '80%' } },
+        dataLabels: { enabled: false },
+        xaxis: { categories: data.locations, labels: { style: { colors: textSecondaryColor, fontSize: '12px' } } },
+        yaxis: { labels: { formatter: (value) => (value / 1000) + 'k', style: { colors: textSecondaryColor, fontSize: '12px' } } },
+        colors: [primaryAccentColor],
+        tooltip: { theme: 'dark' },
+        grid: { borderColor: gridLinesColor, strokeDashArray: 4 }
+      };
+      const chart = new ApexCharts(document.querySelector("#salesByLocationChart"), options);
+      chart.render();
+    }
+    
+    // Chart 3: Sales By Category
+    function initSalesByCategoryChart(data) {
+      const options = {
+        series: data.values,
+        chart: { type: 'pie', height: 300, fontFamily: 'Arial, sans-serif', toolbar: { show: false } },
+        labels: data.categories,
+        colors: purplePalette,
+        legend: { position: 'bottom', fontSize: '12px', fontFamily: 'Arial, sans-serif', labels: { colors: textPrimaryColor } },
+        dataLabels: { enabled: true, formatter: (val) => val.toFixed(1) + '%', style: { fontSize: '12px', fontFamily: 'Arial, sans-serif', fontWeight: 'normal' }, dropShadow: { enabled: false } },
+        tooltip: { theme: 'dark', y: { formatter: (value) => formatCurrency(value) } },
+        responsive: [{ breakpoint: 480, options: { chart: { height: 300 }, legend: { position: 'bottom' } } }]
+      };
+      const chart = new ApexCharts(document.querySelector("#salesByCategoryChart"), options);
+      chart.render();
+    }
+    
+    // Chart 4: Top 10 Customers
+    function initTopCustomersChart(data) {
+      data.values.reverse();
+      data.customers.reverse();
+      const options = {
+        series: [{ name: 'Sales', data: data.values }],
+        chart: { type: 'bar', height: 720, fontFamily: 'Arial, sans-serif', toolbar: { show: false } },
+        plotOptions: { bar: { borderRadius: 4, horizontal: true } },
+        dataLabels: { enabled: true, textAnchor: 'start', style: { colors: ['#fff'] }, formatter: (val) => formatCurrency(val) , offsetX: 0 },
+        xaxis: { categories: data.customers, labels: { show: false, formatter: (value) => (value / 1000) + 'k' } },
+        yaxis: { labels: { style: { colors: textPrimaryColor, fontSize: '12px' } } },
+        colors: [primaryAccentColor],
+        tooltip: { theme: 'dark' },
+        grid: { borderColor: gridLinesColor, strokeDashArray: 4 }
+      };
+      const chart = new ApexCharts(document.querySelector("#topCustomersChart"), options);
+      chart.render();
+    }
+    
+    // Chart 5: Sales, Expense and Profit
+    function initSalesExpenseProfitChart(data) {
+      const options = {
+        series: [{ name: 'Sales', data: data.sales }, { name: 'Cost', data: data.costs }, { name: 'Expenses', data: data.expenses }, { name: 'Profit', data: data.profits }],
+        chart: { type: 'bar', height: 300, stacked: true, stackType: '100%', fontFamily: 'Arial, sans-serif', toolbar: { show: false } },
+        plotOptions: { bar: { horizontal: true } },
+        stroke: { width: 1, colors: ['var(--bg-card)'] },
+        xaxis: { categories: data.years, labels: { style: { colors: textSecondaryColor, fontSize: '12px' } } },
+        yaxis: { labels: { style: { colors: textSecondaryColor, fontSize: '12px' } } },
+        tooltip: { theme: 'dark', y: { formatter: (val) => val + "%" } },
+        fill: { opacity: 1 },
+        legend: { position: 'bottom', horizontalAlign: 'center', fontSize: '12px', labels: { colors: textPrimaryColor } },
+        colors: purplePalette,
+        dataLabels: { enabled: false }
+      };
+      const chart = new ApexCharts(document.querySelector("#salesExpenseProfitChart"), options);
+      chart.render();
+    }
+    
+    // Chart 6: Profit By Category
+    function initProfitByCategoryChart(data) {
+      const options = {
+        series: data.series,
+        chart: { type: 'bar', height: 300, stacked: true, fontFamily: 'Arial, sans-serif', toolbar: { show: false } },
+        plotOptions: { bar: { borderRadius: 4, horizontal: false, columnWidth: '55%' } },
+        dataLabels: { enabled: false },
+        xaxis: { categories: data.years, labels: { style: { colors: textSecondaryColor, fontSize: '12px' } } },
+        yaxis: { labels: { formatter: (value) => (value / 1000) + 'k', style: { colors: textSecondaryColor, fontSize: '12px' } } },
+        legend: { position: 'bottom', horizontalAlign: 'center', fontSize: '12px', labels: { colors: textPrimaryColor } },
+        fill: { opacity: 1 },
+        colors: purplePalette,
+        tooltip: { theme: 'dark' },
+        grid: { borderColor: gridLinesColor, strokeDashArray: 4 }
+      };
+      const chart = new ApexCharts(document.querySelector("#profitByCategoryChart"), options);
+      chart.render();
+    }
+
+    // Chart 7: Profit By Location
+    function initProfitByLocationChart(data) {
+      const options = {
+        series: data.values,
+        chart: { type: 'donut', height: 300, fontFamily: 'Arial, sans-serif' },
+        labels: data.locations,
+        colors: purplePalette,
+        legend: { show: true, position: 'bottom', labels: { colors: textPrimaryColor } },
+        dataLabels: { enabled: true, style: { colors: ['#fff'] }, dropShadow: { enabled: false } },
+        plotOptions: { pie: { donut: { size: '65%', labels: { show: true, name: { show: false }, value: { show: true, fontSize: '20px', color: textPrimaryColor, formatter: (val) => val + "%" }, total: { show: true, label: 'Total Profit', color: textSecondaryColor, formatter: (w) => w.globals.seriesTotals.reduce((a, b) => a + b, 0).toLocaleString() + 'k' } } } } },
+        tooltip: { theme: 'dark', y: { formatter: (val) => val.toFixed(2) + '%' } },
+        responsive: [{ breakpoint: 480, options: { chart: { height: 250 } } }]
+      };
+      const chart = new ApexCharts(document.querySelector("#profitByLocationChart"), options);
+      chart.render();
+    }
+
+    // Chart 8: Sales and Profit Trend
+    function initSalesProfitTrendChart(data) {
+      const options = {
+        series: [{ name: 'Sales', data: data.sales }, { name: 'Profit', data: data.profits }],
+        chart: { type: 'area', height: 300, stacked: true, fontFamily: 'Arial, sans-serif', toolbar: { show: false } },
+        dataLabels: { enabled: false },
+        stroke: { curve: 'smooth', width: 2 },
+        fill: { type: 'gradient', gradient: { opacityFrom: 0.6, opacityTo: 0.2 } },
+        markers: { size: 0 },
+        legend: { position: 'top', horizontalAlign: 'right', fontSize: '12px', labels: { colors: textPrimaryColor } },
+        xaxis: { type: 'datetime', categories: data.dates, labels: { format: 'MMM-yy', style: { colors: textSecondaryColor, fontSize: '12px' } } },
+        yaxis: { labels: { formatter: (value) => (value / 1000) + 'k', style: { colors: textSecondaryColor, fontSize: '12px' } } },
+        colors: ['#8e44ad', '#3498db'], // Purple for sales, Blue for profit
+        tooltip: { theme: 'dark' },
+        grid: { borderColor: gridLinesColor, strokeDashArray: 4 }
+      };
+      const chart = new ApexCharts(document.querySelector("#salesProfitTrendChart"), options);
+      chart.render();
+    }
+  </script>
+</body>
+</html>
