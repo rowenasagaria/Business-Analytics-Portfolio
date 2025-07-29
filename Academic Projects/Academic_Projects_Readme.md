@@ -81,18 +81,6 @@ This repository documents a series of academic data projects spanning data engin
 
 ---
 
-## 📁 Folder Structure
-
-```
-📦 AcademicProjects
- ┣ 📁 SAP_Business_Analysis
- ┣ 📁 ETL_Slaughterhouse_MySQL
- ┣ 📁 Emigration_PowerBI
- ┗ 📁 Digital_Transformation_CaseStudy
-```
-
----
-
 ## 📬 Contact
 
 For more details, questions, or access to raw datasets:
