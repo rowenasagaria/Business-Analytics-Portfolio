@@ -3,7 +3,6 @@
 ## 📌 Overview
 
 This project was made by using this reference [[Youtube Link](https://www.youtube.com/watch?v=zkGoagGpeuY)]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/zkGoagGpeuY?si=CcL61DpJ5ufJBsdX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 This **Retail Sales Dashboard** is a web-based application built using Google Sheets, Google Apps Script, HTML/CSS/JS, and powered by Gemini AI prompts. It allows users to dynamically visualize retail sales data using an intuitive UI backed by charts and key metrics derived from a Google Sheet (`DASHBOARD` > `dataset` tab).
 
