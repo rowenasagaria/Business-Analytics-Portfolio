@@ -18,7 +18,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Monthly revenue/unit trends
 - Summary KPI cards with cross-filtering
 - Brand-wise and Channel-wise performance comparison  
-**📄 More**: [📁 Folder Link → Power BI Smartphone Sales Dashboard]
+**📄 More**: [[📁 Folder Link → Power BI Smartphone Sales Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/ec75b0144ab46ef940815f38dd61440934c3813d/Power%20BI%20Smartphone%20Sales%20Dashboard)]
 
 ---
 
@@ -30,7 +30,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Age-group recovery insights
 - Monthly admission trends
 - Actionable recommendations for optimizing healthcare operations  
-**📄 More**: [📁 Folder Link → Power BI Hospital Insights Dashboard]
+**📄 More**: [📁 Folder Link → [Power BI Hospital Insights Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/ec75b0144ab46ef940815f38dd61440934c3813d/Power%20BI%20Hospital%20Insights%20Dashboard)]
 
 ---
 
@@ -42,7 +42,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Auto-calculated KPIs (Sales, Cost, Profit, Top Products)
 - Eight diverse chart types (spline, stacked, semi-donut, pie, area, etc.)
 - Backup `code.gs` & `index.html` files for reproducibility  
-**📄 More**: [📁 Folder Link → Google AI Studio Retail Sales Dashboard]
+**📄 More**: [📁 Folder Link → [Google AI Studio Retail Sales Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/ec75b0144ab46ef940815f38dd61440934c3813d/Google%20AI%20Studio%20Retail%20Sales%20Dashboard)]
 
 ---
 
@@ -53,7 +53,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - 📌 *Emigration Analysis*: Tableau and SQL-driven study on global migration  
 - 📌 *ETL Project*: Hands-on data cleaning, transformation, and load pipeline  
 - 📌 *SAP Business Portfolio*: Sales order process mapping, analysis, and workflow  
-**📄 More**: [📁 Folder Link → Academic Projects]
+**📄 More**: [📁 Folder Link → [Academic Projects](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/ec75b0144ab46ef940815f38dd61440934c3813d/Academic%20Projects)]
 
 ---
 
