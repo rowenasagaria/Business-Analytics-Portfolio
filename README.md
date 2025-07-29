@@ -64,8 +64,7 @@ Feel free to explore each folder for dashboards, code, and insights.
 ## 📬 Let's Connect
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/rowena-sagaria/)  
-- ✉️ [rowenasagaria@gmail.com](mailto:rowenasagaria@gmail.com)  
-- 🧁 Bonus points if you message me with your favourite Excel formula!
+- ✉️ [rowenasagaria@gmail.com](mailto:rowenasagaria@gmail.com)
 
 
 ---
