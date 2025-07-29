@@ -1,6 +1,6 @@
 
 
-# 🧠✨ Business Analytics Playground
+# 🧠✨ Business Analytics Portfolio
 *Where data meets creativity and dashboards tell stories.*
 
 Hey there! Welcome to my little corner of the internet where I turn raw data and messy workflows into organized, meaningful magic. 🔍📊
