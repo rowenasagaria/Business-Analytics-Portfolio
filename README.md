@@ -20,6 +20,9 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Brand-wise and Channel-wise performance comparison  
 **📄 More**: [📁 Folder Link → Power BI Smartphone Sales Dashboard]
 
+![Dashboard]([url_of_image](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/0194dbe145731edfd0b24fb4cd1077bae975b497/Power%20BI%20Smartphone%20Sales%20Dashboard/Smartphone%20Sales%20Analysis%20Dashboard.png))
+
+
 ---
 
 ## 📂 2. Power BI Hospital Insights Dashboard
