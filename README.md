@@ -33,9 +33,13 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Age-group recovery insights
 - Monthly admission trends
 - Actionable recommendations for optimizing healthcare operations  
-**📄 More**: [📁 Folder Link → Power BI Hospital Insights Dashboard]
+**📄 More**: [📁 Folder Link → [Power BI Hospital Insights Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/4b21daa11fbf22dc1d3535e192227bcc6e5ac9cb/Power%20BI%20Hospital%20Insights%20Dashboard)]
+
+![Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/4b21daa11fbf22dc1d3535e192227bcc6e5ac9cb/Power%20BI%20Hospital%20Insights%20Dashboard/Hospital%20Insights%20Dashboard.png)
+
 
 ---
+
 
 ## 📂 3. Google AI Studio: Retail Sales Dashboard
 **📍 Focus**: Real-time dashboard built with Google Sheets + Apps Script + Gemini AI  
@@ -45,7 +49,9 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Auto-calculated KPIs (Sales, Cost, Profit, Top Products)
 - Eight diverse chart types (spline, stacked, semi-donut, pie, area, etc.)
 - Backup `code.gs` & `index.html` files for reproducibility  
-**📄 More**: [📁 Folder Link → Google AI Studio Retail Sales Dashboard]
+**📄 More**: [📁 Folder Link → [Google AI Studio Retail Sales Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Google%20AI%20Studio%20Retail%20Sales%20Dashboard)]
+
+![Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Google%20AI%20Studio%20Retail%20Sales%20Dashboard/Retail%20Sales%20Dashboard.png)
 
 ---
 
@@ -57,7 +63,9 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Time-based trend analysis with bar and line charts
 - Customer segmentation and sales breakdowns by region and business type
 - Fully interactive Excel dashboard with filters for Year and Month  
-**📄 More**: [📁 Folder Link → Excel-Based Bicycle Sales Dashboard]
+**📄 More**: [📁 Folder Link → [Excel-Based Bicycle Sales Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Excel%20Bicycle%20Sales%20Dashboard)]
+
+![Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Excel%20Bicycle%20Sales%20Dashboard/Dashboard.jpg)]
 
 ---
 
