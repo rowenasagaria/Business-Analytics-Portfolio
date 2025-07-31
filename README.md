@@ -18,7 +18,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Monthly revenue/unit trends
 - Summary KPI cards with cross-filtering
 - Brand-wise and Channel-wise performance comparison  
-**📄 More**: [📁 Folder Link → Power BI Smartphone Sales Dashboard]
+**📄 More**: [📁 Folder Link → [Power BI Smartphone Sales Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/68b8fd5773ae2c6582ec101d873dd58d11704f83/Power%20BI%20Smartphone%20Sales%20Dashboard)]
 
 ![Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/0194dbe145731edfd0b24fb4cd1077bae975b497/Power%20BI%20Smartphone%20Sales%20Dashboard/Smartphone%20Sales%20Analysis%20Dashboard.png)
 
