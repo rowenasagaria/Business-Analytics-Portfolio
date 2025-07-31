@@ -18,7 +18,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Monthly revenue/unit trends
 - Summary KPI cards with cross-filtering
 - Brand-wise and Channel-wise performance comparison  
-**📄 More**: [[📁 Folder Link → Power BI Smartphone Sales Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/ec75b0144ab46ef940815f38dd61440934c3813d/Power%20BI%20Smartphone%20Sales%20Dashboard)]
+**📄 More**: [📁 Folder Link → Power BI Smartphone Sales Dashboard]
 
 ---
 
@@ -30,7 +30,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Age-group recovery insights
 - Monthly admission trends
 - Actionable recommendations for optimizing healthcare operations  
-**📄 More**: [📁 Folder Link → [Power BI Hospital Insights Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/ec75b0144ab46ef940815f38dd61440934c3813d/Power%20BI%20Hospital%20Insights%20Dashboard)]
+**📄 More**: [📁 Folder Link → Power BI Hospital Insights Dashboard]
 
 ---
 
@@ -42,19 +42,30 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Auto-calculated KPIs (Sales, Cost, Profit, Top Products)
 - Eight diverse chart types (spline, stacked, semi-donut, pie, area, etc.)
 - Backup `code.gs` & `index.html` files for reproducibility  
-**📄 More**: [📁 Folder Link → [Google AI Studio Retail Sales Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/ec75b0144ab46ef940815f38dd61440934c3813d/Google%20AI%20Studio%20Retail%20Sales%20Dashboard)]
+**📄 More**: [📁 Folder Link → Google AI Studio Retail Sales Dashboard]
 
 ---
 
-## 📂 4. Academic Project Reports
+## 📂 4. Excel-Based Bicycle Sales Dashboard
+**📍 Focus**: Bicycle shop sales performance across time, geography, and product segments  
+**🧰 Tools**: Microsoft Excel (Pivot Tables, Charts, Slicers)  
+**🎯 Key Features**:
+- KPI Cards: Total Sales, Profit, Profit %, Units Sold, Top Selling Product
+- Time-based trend analysis with bar and line charts
+- Customer segmentation and sales breakdowns by region and business type
+- Fully interactive Excel dashboard with filters for Year and Month  
+**📄 More**: [📁 Folder Link → Excel-Based Bicycle Sales Dashboard]
+
+---
+
+## 📂 5. Academic Projects
 **📍 Focus**: Data analysis, BI reporting, SAP workflow, and ETL pipelines  
 **🧾 Contains**:
 - 📌 *Digital Transformation Project*: Executive insight on strategic initiatives  
 - 📌 *Emigration Analysis*: Tableau and SQL-driven study on global migration  
 - 📌 *ETL Project*: Hands-on data cleaning, transformation, and load pipeline  
-- 📌 *SAP Business Portfolio*: Sales order process mapping, analysis, and workflow
-- 📌 *CompareWeb Capstone*: Market-validated platform prototype addressing second-hand shopping inefficiencies for newcomers in Canada  
-**📄 More**: [📁 Folder Link → [Academic Projects](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/ec75b0144ab46ef940815f38dd61440934c3813d/Academic%20Projects)]
+- 📌 *SAP Business Portfolio*: Sales order process mapping, analysis, and workflow  
+**📄 More**: [📁 Folder Link → Academic Projects]
 
 ---
 
