@@ -64,7 +64,8 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - 📌 *Digital Transformation Project*: Executive insight on strategic initiatives  
 - 📌 *Emigration Analysis*: Tableau and SQL-driven study on global migration  
 - 📌 *ETL Project*: Hands-on data cleaning, transformation, and load pipeline  
-- 📌 *SAP Business Portfolio*: Sales order process mapping, analysis, and workflow  
+- 📌 *SAP Business Portfolio*: Sales order process mapping, analysis, and workflow
+- 📌 CompareWeb Capstone: Market-validated platform prototype addressing second-hand shopping inefficiencies for newcomers in Canada  
 **📄 More**: [📁 Folder Link → Academic Projects]
 
 ---
