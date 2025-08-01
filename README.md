@@ -77,7 +77,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - 📌 *ETL Project*: Hands-on data cleaning, transformation, and load pipeline  
 - 📌 *SAP Business Portfolio*: Sales order process mapping, analysis, and workflow
 - 📌 CompareWeb Capstone: Market-validated platform prototype addressing second-hand shopping inefficiencies for newcomers in Canada  
-**📄 More**: [📁 Folder Link → Academic Projects]
+**📄 More**: [📁 Folder Link → [Academic Projects](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/6d0b8f4874cdff07f7dd0254d6f11f03c8441e28/Academic%20Project%20Reports)]
 
 ---
 
