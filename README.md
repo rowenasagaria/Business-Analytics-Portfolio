@@ -69,7 +69,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 
 ---
 
-## 📂 5.Sentiment & Text Analysis of Global Wine Reviews
+## 📂 5.Tableau Sentiment & Text Analysis of Global Wine Reviews
 **📍 Focus**: Translating 6,000 unstructured wine reviews into strategic business insights
 **🧰 Tools**: Netlytic (text mining), Tableau (visual analytics)
 **🎯 Key Features**:
@@ -79,9 +79,9 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Key finding: South American reviews show stronger positive emotional intensity, a critical insight for marketing strategy
 - End-to-end workflow from text preprocessing → visualization → business insight
 
-**📄 More**: [📁 Folder Link → [Excel-Based Bicycle Sales Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Excel%20Bicycle%20Sales%20Dashboard)]
+**📄 More**: [📁 Folder Link → [Tableau Sentiment & Text Analysis of Global Wine Reviews](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/154ec30511ece01928ba42e0aec21497603bca9e/Tableau%20Sentiment%20%26%20Text%20%20Analysis%20of%20Global%20Wine%20reviews)]
 
-![Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Excel%20Bicycle%20Sales%20Dashboard/Dashboard.jpg)
+![Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/154ec30511ece01928ba42e0aec21497603bca9e/Tableau%20Sentiment%20%26%20Text%20%20Analysis%20of%20Global%20Wine%20reviews/Tableau%20Dashboard%20Screenshot%203.png)
 
 ---
 
