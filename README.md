@@ -69,8 +69,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 
 ---
 
-## 📂 Sentiment & Text Analysis of Global Wine Reviews
-
+## 📂 5.Sentiment & Text Analysis of Global Wine Reviews
 **📍 Focus**: Translating 6,000 unstructured wine reviews into strategic business insights
 **🧰 Tools**: Netlytic (text mining), Tableau (visual analytics)
 **🎯 Key Features**:
@@ -86,7 +85,7 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 
 ---
 
-## 📂 5. Academic Projects
+## 📂 6. Academic Projects
 **📍 Focus**: Data analysis, BI reporting, SAP workflow, and ETL pipelines  
 **🧾 Contains**:
 - 📌 *Digital Transformation Project*: Executive insight on strategic initiatives  
