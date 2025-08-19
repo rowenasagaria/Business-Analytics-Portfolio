@@ -39,13 +39,13 @@ My guiding philosophy:
 ## 📈 Key Visuals
 
 ### Average Price & Review Points of Wine by Country
-![Price vs Points](./images/Screenshot1.png)
+![Price vs Points](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/06fedfa4c1577c9632bb59e8b0204d41e01b86e2/Tableau%20Sentiment%20%26%20Text%20%20Analysis%20of%20Global%20Wine%20reviews/Tableau%20Dashboard%20Screenshot%203.png)
 
 ### Word Frequency Clouds (Top 150 Terms)
-![Top Terms](./images/Screenshot2.png)
+![Top Terms](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/06fedfa4c1577c9632bb59e8b0204d41e01b86e2/Tableau%20Sentiment%20%26%20Text%20%20Analysis%20of%20Global%20Wine%20reviews/Tableau%20Screenshot%202.png)
 
 ### Sentiment Distribution by Continent
-![Sentiment Distribution](./images/Screenshot3.png)
+![Sentiment Distribution](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/06fedfa4c1577c9632bb59e8b0204d41e01b86e2/Tableau%20Sentiment%20%26%20Text%20%20Analysis%20of%20Global%20Wine%20reviews/Tableau%20Screenshot%201.png)
 
 ---
 
@@ -70,17 +70,6 @@ My guiding philosophy:
 
 ---
 
-## 📂 Repository Structure
-```
-.
-├── data/               # (optional) CSV files, polarity scores
-├── images/             # Screenshots & visualizations
-├── notebooks/          # Preprocessing or sentiment scripts (if applicable)
-├── README.md           # Project documentation
-```
-
----
-
 ## 📢 Future Work
 - Expand dataset beyond 6,000 reviews for stronger generalization.  
 - Integrate **topic modeling (LDA)** to uncover hidden themes beyond word frequency.  
@@ -88,7 +77,5 @@ My guiding philosophy:
 
 ---
 
-## 👤 Author
-**Kripa Hariharan**  
-- Mechanical Design & Product Development | Data Visualization Enthusiast  
-- 🌐 [Portfolio](http://harandesigns.com) | [LinkedIn](https://linkedin.com/in/kripahariharan)
+## 📫 Contact
+For questions or feedback, feel free to reach out via **[LinkedIn – Rowena Sagaria](https://www.linkedin.com/in/rowenasagaria)**.
