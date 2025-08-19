@@ -65,7 +65,24 @@ Hey there! Welcome to my little corner of the internet where I turn raw data and
 - Fully interactive Excel dashboard with filters for Year and Month  
 **📄 More**: [📁 Folder Link → [Excel-Based Bicycle Sales Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Excel%20Bicycle%20Sales%20Dashboard)]
 
-![Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Excel%20Bicycle%20Sales%20Dashboard/Dashboard.jpg)]
+![Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Excel%20Bicycle%20Sales%20Dashboard/Dashboard.jpg)
+
+---
+
+## 📂 Sentiment & Text Analysis of Global Wine Reviews
+
+**📍 Focus**: Translating 6,000 unstructured wine reviews into strategic business insights
+**🧰 Tools**: Netlytic (text mining), Tableau (visual analytics)
+**🎯 Key Features**:
+- Structured raw reviews into bag-of-words datasets across 3 continents (Europe, North America, South America
+- Built word frequency dashboards (Top 150 terms per continent)
+- Integrated sentiment polarity scores to reveal distribution differences across regions
+- Key finding: South American reviews show stronger positive emotional intensity, a critical insight for marketing strategy
+- End-to-end workflow from text preprocessing → visualization → business insight
+
+**📄 More**: [📁 Folder Link → [Excel-Based Bicycle Sales Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/tree/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Excel%20Bicycle%20Sales%20Dashboard)]
+
+![Dashboard](https://github.com/rowenasagaria/Business-Analytics-Portfolio/blob/551ed6e3d8fa1db9e9391e2a47ce928056e36130/Excel%20Bicycle%20Sales%20Dashboard/Dashboard.jpg)
 
 ---
 
