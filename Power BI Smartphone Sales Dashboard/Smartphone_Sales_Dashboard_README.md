@@ -1,18 +1,19 @@
+# Power BI Smartphone Sales Analysis  
 
-# Smartphone Sales Dashboard 📱📊
-
-This project presents a fully interactive Power BI dashboard analyzing smartphone sales performance across brands, channels, and customer segments. It delivers real-time insights into revenue, transactions, trends, and product success.
+📊 **Duration:** 3 months  
+📱 **Dataset:** Smartphone sales data across brands, demographics, and geographies  
+🛠️ **Tool Used:** Microsoft Power BI  
 
 ---
 
-## 📌 Executive Summary
+## 📌 Project Overview
+This project began with a classic executive challenge: our sales data was rich, but our insights were poor. Leadership could see **top-line revenue** but had no visibility into the **critical drivers** behind the numbers. Strategic questions went unanswered:  
 
-This dashboard empowers stakeholders to:
-- Track monthly sales trends
-- Compare brand revenue performance
-- Analyze customer buying behavior
-- Optimize channel and payment strategies
-- Filter data interactively to explore deep insights
+- Were high-revenue brands also the most profitable across key demographics?  
+- How did **customer payment preferences** vary by sales channel?  
+- Were we optimizing for our **best-selling models**?  
+
+The mission was to build a **multi-faceted Power BI dashboard** that would move the business from simple revenue tracking to a deep, **granular understanding of sales performance**.  
 
 ---
 
@@ -41,17 +42,58 @@ The dataset includes sales records across various countries and channels. Key fi
 
 ---
 
-## 📈 Dashboard Features
+## 🔑 Approach
+My guiding philosophy:  
+> “A great dashboard doesn’t just show you what happened; it shows you where to look next.”  
 
-### Key Visuals:
-- **Monthly Trend Chart**: Tracks revenue and units sold over time
-- **Brand Performance**: Bar chart comparing revenue by brand
-- **Payment Mode Distribution**: Donut chart for customer preferences
-- **Sales Channel Comparison**: Segments performance across retail/online/partner
-- **Top Metrics Cards**: Total revenue, transactions, units, and ASP
+1. **Dashboard Architecture**  
+   - Designed a **three-part guided analytics experience**:  
+     - **Executive Summary** → high-level KPIs  
+     - **Sales Insights** → brand, gender, and demographic breakdowns  
+     - **Performance** → city-level sales and top models  
 
-### Filters:
-- `Month` | `Brand` | `Operating System` | `Channel` | `Payment Mode` | `Country`
+2. **Data Modeling & KPIs**  
+   - Built robust data model with DAX measures.  
+   - Core KPIs: **Total Revenue (3.8M)**, **Average Price (836.1)**, **Units Sold**, **Profitability**.  
+
+3. **Critical Design Iteration**  
+   - Initial design led executives to a **misleading conclusion**: OnePlus appeared as the top performer (1.05M revenue) vs Samsung (1.04M).  
+   - A deeper look revealed Samsung’s **dominance in the high-spending 34–41 age group**, a key segment that was invisible on the summary page.  
+   - **Solution:** Redesigned navigation → persistent slicers across all tabs to ensure context carried forward.  
+
+4. **Final Experience**  
+   - Executives could now drill seamlessly from summary to detailed views.  
+   - Prevented oversimplified insights and encouraged **holistic analysis**.  
+
+---
+
+## 📈 Key Insights
+- **Samsung’s demographic strength:** Outperformed OnePlus with the critical **34–41 demographic**.  
+- **Targeted campaigns:** Instead of boosting OnePlus marketing, leadership launched a **focused Samsung campaign** for premium models.  
+- **Operational optimization:** “Performance” tab revealed city-level demand, allowing inventory focus on models like the **OnePlus Nord 4 in Bursa**.  
+
+---
+
+## 📊 Dashboard Features
+- **Executive Summary** → KPI cards, brand performance overview  
+- **Sales Insights** → gender, age group, payment preference analysis  
+- **Performance Tab** → top models, revenue vs. units by city  
+- **Persistent Slicers & Filters** → seamless user journey across tabs  
+
+---
+
+## 🚀 What This Project Demonstrates
+✔️ Ability to architect **multi-page Power BI dashboards**.  
+✔️ Skill in designing for **different stakeholder needs** (executive vs. analyst).  
+✔️ Experience in **data modeling with DAX** for custom KPIs.  
+✔️ Focus on **preventing misinterpretation** through thoughtful dashboard design.  
+
+---
+
+## 📢 Future Work
+- Incorporate **forecasting** for revenue and demand.  
+- Add **RLS (Row-Level Security)** for role-specific dashboards.  
+- Deploy as a **Power BI Service App** for broader accessibility.  
 
 ---
 
